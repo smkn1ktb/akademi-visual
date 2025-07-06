@@ -1,0 +1,381 @@
+/* === STYLE GLOBAL === */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: #0056b3;
+}
+
+header p, header h3 {
+    margin: 5px 0 0;
+    color: #666;
+}
+
+.link-kembali {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* === STYLE DASHBOARD === */
+.akademi h2 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.grid-tantangan {
+    display: grid;
+    gap: 15px;
+}
+
+.link-kartu {
+    text-decoration: none;
+    color: inherit;
+}
+
+.kartu-tantangan {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.kartu-tantangan:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.kartu-tantangan .status-icon {
+    font-size: 24px;
+}
+
+.kartu-tantangan h3 {
+    margin: 10px 0 5px;
+    font-size: 16px;
+}
+
+.kartu-tantangan p {
+    margin: 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.kartu-tantangan.selesai {
+    background-color: #e8f5e9;
+    border-color: #a5d6a7;
+    color: #2e7d32;
+}
+
+.kartu-tantangan.terkunci {
+    background-color: #eeeeee;
+    border-color: #e0e0e0;
+    color: #9e9e9e;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.kartu-tantangan.terkunci:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.tombol-tes {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tombol-tes:hover {
+    background-color: #0056b3;
+}
+
+.tombol-tes:disabled {
+    background-color: #c0c0c0;
+    cursor: not-allowed;
+}
+
+/* === STYLE HALAMAN TANTANGAN === */
+.instruksi {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.kanvas {
+    position: relative;
+    background-color: #ffffff;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    height: 300px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.elemen-desain {
+    background-color: #e0e7ff;
+    color: #4338ca;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.elemen-desain.terpilih {
+    border-color: #4338ca;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(67, 56, 202, 0.2);
+}
+
+.area-kontrol {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tombol-kontrol, .tombol-aksi {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tombol-kontrol {
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+}
+
+.tombol-aksi {
+    background-color: #16a34a;
+    color: white;
+}
+
+/* TANTANGAN 2: KESEIMBANGAN */
+.kanvas-seimbang {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.area-kiri, .area-kanan {
+    width: 45%;
+    height: 100%;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+}
+.item-seimbang {
+    background: #ffc107;
+    margin-top: 5px;
+    text-align: center;
+    color: black;
+    font-size: 12px;
+}
+
+/* TANTANGAN 3: KONTRAST */
+.palet-warna {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.warna-pilihan {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* TANTANGAN 4: RULE OF THIRDS */
+.grid-rot {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    pointer-events: none; /* Agar tidak bisa diklik */
+}
+.grid-rot div { border: 1px solid rgba(0, 0, 0, 0.2); }
+#ikon-rot {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    cursor: grab;
+    user-select: none;
+}
+#ikon-rot:active { cursor: grabbing; }
+
+/* TANTANGAN 5: RUANG KOSONG */
+.kanvas-penuh {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+.elemen-hapus {
+    background-color: #e0e7ff;
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+.elemen-hapus.dihapus {
+    opacity: 0.2;
+    background-color: #ccc;
+}
+/* === STYLE HALAMAN TES AKHIR === */
+.area-tes .soal {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+.gambar-soal {
+    width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
+.pilihan-jawaban {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.pilihan {
+    width: 100%;
+    padding: 12px;
+    text-align: left;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+.pilihan.terpilih {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+/* === STYLE HALAMAN HASIL === */
+.area-hasil {
+    text-align: center;
+}
+
+.lingkaran-skor {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    box-shadow: 0 5px 20px rgba(0, 123, 255, 0.4);
+}
+
+#nilai-akhir {
+    font-size: 60px;
+    font-weight: 700;
+}
+
+#pesan-hasil {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#area-saran {
+    text-align: left;
+}
+
+.saran-item {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 8px 8px 0;
+}
+
+.saran-item h4 {
+    margin: 0 0 5px 0;
+    color: #664d03;
+}
+
+.saran-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #664d03;
+}
