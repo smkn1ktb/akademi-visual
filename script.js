@@ -150,26 +150,59 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     } else if (page === 'tantangan4') {
-        // --- LOGIKA TANTANGAN 4: RULE OF THIRDS ---
+        // --- LOGIKA TANTANGAN 4: RULE OF THIRDS (SUDAH DIPERBAIKI) ---
         const ikon = document.getElementById('ikon-rot');
         const kanvas = document.querySelector('.kanvas');
         const tombolCek = document.querySelector('.tombol-aksi');
         let isDragging = false;
 
-        ikon.addEventListener('mousedown', () => { isDragging = true; });
-        window.addEventListener('mouseup', () => { isDragging = false; });
-        window.addEventListener('mousemove', (e) => {
+        // Fungsi untuk memulai gerakan
+        const startDrag = () => {
+            isDragging = true;
+        };
+
+        // Fungsi untuk menghentikan gerakan
+        const stopDrag = () => {
+            isDragging = false;
+        };
+
+        // Fungsi untuk melakukan gerakan
+        const drag = (e) => {
             if (!isDragging) return;
+            
+            // Cek apakah ini event sentuhan atau mouse
+            let clientX, clientY;
+            if (e.touches) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+
             const rect = kanvas.getBoundingClientRect();
-            // hitung posisi mouse relatif terhadap kanvas
-            let x = e.clientX - rect.left - (ikon.offsetWidth / 2);
-            let y = e.clientY - rect.top - (ikon.offsetHeight / 2);
+            // Hitung posisi relatif terhadap kanvas
+            let x = clientX - rect.left - (ikon.offsetWidth / 2);
+            let y = clientY - rect.top - (ikon.offsetHeight / 2);
             // Batasi agar ikon tidak keluar kanvas
             x = Math.max(0, Math.min(x, rect.width - ikon.offsetWidth));
             y = Math.max(0, Math.min(y, rect.height - ikon.offsetHeight));
             ikon.style.left = x + 'px';
             ikon.style.top = y + 'px';
-        });
+            
+            // Mencegah scrolling halaman di HP saat menyeret ikon
+            e.preventDefault(); 
+        };
+        
+        // --- Event Listener untuk MOUSE ---
+        ikon.addEventListener('mousedown', startDrag);
+        window.addEventListener('mouseup', stopDrag);
+        window.addEventListener('mousemove', drag);
+
+        // --- Event Listener untuk SENTUHAN (MOBILE) ---
+        ikon.addEventListener('touchstart', startDrag);
+        window.addEventListener('touchend', stopDrag);
+        window.addEventListener('touchmove', drag, { passive: false }); // passive: false diperlukan untuk preventDefault
 
         tombolCek.addEventListener('click', () => {
             const rect = kanvas.getBoundingClientRect();
